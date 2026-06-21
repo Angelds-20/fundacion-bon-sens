@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundación Bon Sens | Contacto</title>
+  <meta name="description" content="Ponte en contacto con Fundación Bon Sens en Talca." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header fixed top-0 left-0 w-full z-50 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="/"><img src="logo2.PNG" alt="Fundación Bon Sens" class="h-16 w-auto" /></a><nav class="hidden md:flex items-center gap-6"><a class="nav-link" href="/">Inicio</a><a class="nav-link" href="/nosotros">Nosotros</a><a class="nav-link" href="/que-hacemos">Qué Hacemos</a><a class="nav-link" href="/noticias">Noticias</a><a class="nav-link" href="/como-ayudar">Cómo Ayudar</a><a class="nav-link active" href="/contacto">Contacto</a><a href="/como-ayudar#donar-online" class="btn-primary px-5 py-2 rounded-lg font-semibold">Donar</a></nav><button id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-2xl text-[#111111]"><i class="fa-solid fa-bars"></i></button></div></div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white"><nav class="px-4 py-4 flex flex-col gap-3"><a class="nav-link" href="/">Inicio</a><a class="nav-link" href="/nosotros">Nosotros</a><a class="nav-link" href="/que-hacemos">Qué Hacemos</a><a class="nav-link" href="/noticias">Noticias</a><a class="nav-link" href="/como-ayudar">Cómo Ayudar</a><a class="nav-link active" href="/contacto">Contacto</a><a href="/como-ayudar#donar-online" class="btn-primary px-5 py-2 rounded-lg font-semibold text-center">Donar</a></nav></div>
+  </header>
+
+  <main class="pt-20">
+    <section class="py-16 md:py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-6 section-title">Contacto</h1>
+          <p class="text-gray-700 mb-6">¿Tienes dudas, quieres colaborar o coordinar una donación? Escríbenos y te responderemos a la brevedad.</p>
+
+          <form class="space-y-4 mb-8">
+            <div>
+              <label for="nombre" class="block font-medium mb-1">Nombre</label>
+              <input id="nombre" name="nombre" type="text" required class="form-input" />
+            </div>
+            <div>
+              <label for="email" class="block font-medium mb-1">Email</label>
+              <input id="email" name="email" type="email" required class="form-input" />
+            </div>
+            <div>
+              <label for="mensaje" class="block font-medium mb-1">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required class="form-input"></textarea>
+            </div>
+            <button type="submit" class="btn-primary px-6 py-3 rounded-lg font-semibold">Enviar mensaje</button>
+          </form>
+
+          <div class="space-y-2 text-gray-700">
+            <p><strong>Dirección:</strong> Línea 9 Sur N°270, Talca</p>
+            <p><strong>WhatsApp:</strong> +56 9 1234 5678</p>
+            <p><strong>Teléfono:</strong> +56 71 123 4567</p>
+            <p><strong>Correo:</strong> contacto@fundacionbonsens.cl</p>
+            <div class="flex items-center gap-4 pt-2 text-xl text-[#111111]"><a href="#" aria-label="Facebook" class="hover:text-[#CC0000]"><i class="fa-brands fa-facebook"></i></a><a href="#" aria-label="Instagram" class="hover:text-[#CC0000]"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="TikTok" class="hover:text-[#CC0000]"><i class="fa-brands fa-tiktok"></i></a></div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-sm min-h-[420px]">
+          <iframe
+            title="Mapa Fundación Bon Sens"
+            src="https://www.google.com/maps?q=L%C3%ADnea%209%20Sur%20270%2C%20Talca%2C%20Chile&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0; min-height:420px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#111111] text-white py-10"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8"><div><a href="/"><img src="logo2.PNG" alt="Fundación Bon Sens" class="h-18 w-auto bg-white rounded-xl p-1 mb-2" /></a><p class="text-gray-300">Talca, Chile</p></div><nav class="flex flex-col gap-2"><a href="/" class="hover:text-[#CC0000]">Inicio</a><a href="/nosotros" class="hover:text-[#CC0000]">Nosotros</a><a href="/que-hacemos" class="hover:text-[#CC0000]">Qué Hacemos</a><a href="/noticias" class="hover:text-[#CC0000]">Noticias</a><a href="/como-ayudar" class="hover:text-[#CC0000]">Cómo Ayudar</a><a href="/contacto" class="hover:text-[#CC0000]">Contacto</a></nav><div><p class="font-semibold mb-2">Síguenos</p><div class="flex items-center gap-4 text-xl"><a href="#" aria-label="Facebook" class="hover:text-[#CC0000]"><i class="fa-brands fa-facebook"></i></a><a href="#" aria-label="Instagram" class="hover:text-[#CC0000]"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="TikTok" class="hover:text-[#CC0000]"><i class="fa-brands fa-tiktok"></i></a></div></div><div><p class="font-semibold mb-2">Newsletter</p><form data-newsletter class="flex flex-col gap-2"><input type="email" placeholder="tu@email.cl" required class="px-3 py-2 rounded-lg text-sm text-gray-800 outline-none" /><button type="submit" class="bg-[#CC0000] text-white px-3 py-2 rounded-lg text-xs font-semibold hover:brightness-90">Suscribirse</button></form></div></div><div class="border-t border-white/20 mt-8 pt-6 text-center text-sm text-gray-300">© 2026 Fundación Bon Sens. Todos los derechos reservados.</div></footer>
+
+  <a href="https://wa.me/56912345678" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><i class="fa-brands fa-whatsapp text-3xl"></i></a>
+  <script src="main.js" defer></script>
+</body>
+</html>

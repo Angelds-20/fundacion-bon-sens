@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:80"
+    environment:
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin123
+      - SESSION_SECRET=bonsens_secret_prod_2026
+      - BASE_URL=http://localhost:3000
+      - DB_PATH=/var/www/html/data/bonsens.db
+    volumes:
+      - bonsens-data:/var/www/html/data
+
+volumes:
+  bonsens-data:

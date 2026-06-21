@@ -1,0 +1,57 @@
+# Fundación Bon Sens - Configuración Apache
+# Activar: a2enmod rewrite headers
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # API routes
+    RewriteRule ^api/(.*)$ backend/api.php [QSA,L,E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Admin SPA - rutas internas
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} ^/admin
+    RewriteRule ^(.*)$ admin/index.html [QSA,L]
+
+    # Reglas para URLs limpias de las páginas principales
+    RewriteRule ^nosotros$ nosotros.html [L]
+    RewriteRule ^que-hacemos$ que-hacemos.html [L]
+    RewriteRule ^noticias$ noticias.html [L]
+    RewriteRule ^como-ayudar$ como-ayudar.html [L]
+    RewriteRule ^contacto$ contacto.html [L]
+
+    # Regla para detalle de noticias (cualquier ruta bajo /noticias/algo)
+    RewriteRule ^noticias/([a-z0-9-]+)$ noticia.html [L]
+
+    # Archivos estáticos
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.html [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Seguridad
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Cache para archivos estáticos (7 días)
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|woff2?)$">
+        Header set Cache-Control "public, max-age=604800, immutable"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/json application/javascript image/svg+xml
+</IfModule>
+
+# Denegar acceso a archivos sensibles
+<FilesMatch "\.(env|sqlite|db|log)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+</IfModule>
