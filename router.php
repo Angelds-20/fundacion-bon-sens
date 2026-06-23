@@ -78,10 +78,13 @@ if (preg_match('#^/noticias/([a-z0-9-]+)$#', $path)) {
     return true;
 }
 
-// Para todo lo demás, servir el archivo estático o index.html
-$staticFile = __DIR__ . $path;
-if ($path === '/' || !file_exists($staticFile)) {
+// Para todo lo demás, servir la página de inicio o dar error 404
+if ($path === '/') {
     require __DIR__ . '/index.html';
-} else {
-    return false; // PHP built-in server sirve el archivo
+    return true;
 }
+
+// Si la ruta no coincide con ningún archivo ni ruta válida, responder 404 real
+http_response_code(404);
+echo "404 Not Found\n";
+return true;
