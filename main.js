@@ -10,7 +10,7 @@
   - Sistema de notificaciones Toast
 */
 
-// TODO CLIENTE: Agregar la URL oficial del portal de pagos de Donando (si aplica)
+// URL del portal de pagos (ej: Donando) si está integrado en producción
 const DONANDO_PAYMENT_URL = "";
 
 document.addEventListener('DOMContentLoaded', () => {

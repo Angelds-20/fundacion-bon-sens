@@ -6,7 +6,7 @@
  *
  * En producción usar Apache/Nginx con las reglas .htaccess incluidas.
  *
- * Carga las extensiones SQLite desde /tmp (porque no tenemos sudo para instalarlas)
+ * Carga las extensiones SQLite si se requieren en entornos temporales.
  */
 
 // ─── Cargar extensiones SQLite (necesario en este entorno) ───────
