@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initNewsletterForm();
   initPublicNews();
+  initScrollReveal();
 });
 
 // ============================================
@@ -485,4 +486,26 @@ function escapeHtml(str) {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
+}
+
+// ============================================
+// REVELACIÓN AL HACER SCROLL (SCROLL REVEAL)
+// ============================================
+
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  reveals.forEach((element) => observer.observe(element));
 }

@@ -23,22 +23,83 @@ body {
 
 /* Header sticky */
 .site-header {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .site-header.is-sticky {
-  background-color: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Hero */
+/* Nav links premium hover effect */
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Hero & Animaciones de Entrada */
 .hero-overlay {
   background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.65),
-    rgba(0, 0, 0, 0.45)
+    to bottom,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.35)
   );
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-btn {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* Utilidades de Animación por Scroll (Scroll Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Utilidades visuales */
@@ -47,12 +108,12 @@ body {
 }
 
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary {
@@ -62,8 +123,9 @@ body {
 }
 
 .btn-primary:hover {
-  filter: brightness(0.92);
-  transform: translateY(-1px);
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(204, 0, 0, 0.3);
 }
 
 /* Noticias placeholder */
@@ -80,11 +142,23 @@ body {
   background: #fafafa;
 }
 
-/* Botón flotante WhatsApp */
+/* Botón flotante WhatsApp y Animación */
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
 .whatsapp-float {
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
   width: 58px;
   height: 58px;
   border-radius: 999px;
@@ -93,13 +167,14 @@ body {
   justify-content: center;
   background: #25d366;
   color: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
   z-index: 60;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: whatsapp-pulse 2s infinite;
 }
 
 .whatsapp-float:hover {
-  transform: scale(1.07);
+  transform: scale(1.1) translateY(-2px);
 }
 
 /* Campos de formulario */
@@ -128,6 +203,10 @@ body {
   .hero-title {
     font-size: 2rem;
     line-height: 1.2;
+  }
+  .whatsapp-float {
+    right: 1rem;
+    bottom: 1rem;
   }
 }
 
