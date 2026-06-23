@@ -6,7 +6,7 @@ Esta plataforma consta de un sitio público informativo, un portal de donaciones
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 - **Frontend**: HTML5, Vanilla JavaScript, CSS3 (con soporte auxiliar de Tailwind CSS para componentes dinámicos y responsive) y Font Awesome 6 para iconos.
 - **Backend**: PHP 8.x (arquitectura Front Controller sin dependencias pesadas ni frameworks, facilitando el despliegue rápido en hosting tradicionales).
@@ -15,17 +15,17 @@ Esta plataforma consta de un sitio público informativo, un portal de donaciones
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 web/
-├── index.html               # 🏠 Página de inicio (Pública)
-├── nosotros.html            # 👥 Quiénes Somos (Pública)
-├── que-hacemos.html         # 🤝 Programas de ayuda (Pública)
-├── noticias.html            # 📰 Catálogo dinámico de noticias (Pública)
-├── noticia.html             # 📖 Plantilla de detalle de noticia por URL limpia (Pública)
-├── como-ayudar.html         # 💚 Información de donaciones y voluntariado (Pública)
-├── contacto.html            # 📞 Formulario de contacto y mapa (Pública)
+├── index.html               # Página de inicio (Pública)
+├── nosotros.html            # Quiénes Somos (Pública)
+├── que-hacemos.html         # Programas de ayuda (Pública)
+├── noticias.html            # Catálogo dinámico de noticias (Pública)
+├── noticia.html             # Plantilla de detalle de noticia por URL limpia (Pública)
+├── como-ayudar.html         # Información de donaciones y voluntariado (Pública)
+├── contacto.html            # Formulario de contacto y mapa (Pública)
 ├── style.css                # Estilos personalizados generales del sitio
 ├── main.js                  # Frontend JS (Newsletter, Contacto, Donaciones, Menú Móvil)
 ├── logo2.PNG                # Logotipo oficial de la Fundación
@@ -49,7 +49,7 @@ web/
 
 ---
 
-## 🗄️ Esquema de Base de Datos (SQLite)
+## Esquema de Base de Datos (SQLite)
 
 El schema de datos se define e inicializa de forma automática en [backend/config.php](file:///home/angel/Descargas/web/backend/config.php#L49-L124):
 
@@ -109,7 +109,7 @@ El schema de datos se define e inicializa de forma automática en [backend/confi
 
 ---
 
-## 🚀 Rutas de la API (Endpoints REST)
+## Rutas de la API (Endpoints REST)
 
 Todas las rutas inician con el prefijo `/api` y son manejadas por el Front Controller [backend/api.php](file:///home/angel/Descargas/web/backend/api.php).
 
@@ -139,7 +139,7 @@ Todas las rutas inician con el prefijo `/api` y son manejadas por el Front Contr
 
 ---
 
-## 💳 Integración de Pagos (Banco Estado / Webpay Plus)
+## Integración de Pagos (Banco Estado / Webpay Plus)
 
 El sistema de donaciones se integra con el API REST oficial de **Transbank Webpay Plus** (en su ambiente de pruebas/integración):
 
@@ -161,25 +161,25 @@ El sistema de donaciones se integra con el API REST oficial de **Transbank Webpa
 
 ---
 
-## 🔗 Enrutamiento de URLs Limpias (SEO)
+## Enrutamiento de URLs Limpias (SEO)
 
 Para maximizar la optimización en motores de búsqueda (SEO) y presentar un aspecto profesional, se ha eliminado la extensión `.html` de la barra de direcciones:
 
 ### Apache (`.htaccess`)
 Implementa redirecciones internas transparentes que sirven los archivos HTML estáticos de forma interna:
-- `/nosotros` ➡️ `nosotros.html`
-- `/que-hacemos` ➡️ `que-hacemos.html`
-- `/noticias` ➡️ `noticias.html`
-- `/noticias/{slug}` ➡️ `noticia.html` (pasando el control a JS para cargar la noticia por slug)
-- `/contacto` ➡️ `contacto.html`
-- `/como-ayudar` ➡️ `como-ayudar.html`
+- `/nosotros` -> `nosotros.html`
+- `/que-hacemos` -> `que-hacemos.html`
+- `/noticias` -> `noticias.html`
+- `/noticias/{slug}` -> `noticia.html` (pasando el control a JS para cargar la noticia por slug)
+- `/contacto` -> `contacto.html`
+- `/como-ayudar` -> `como-ayudar.html`
 
 ### Servidor Local PHP (`router.php`)
 Simula exactamente el mismo comportamiento de Apache en el entorno de desarrollo local (`php -S localhost:3000 router.php`).
 
 ---
 
-## 💻 Panel de Administración (`/admin/`)
+## Panel de Administración (`/admin/`)
 
 Es una Single Page Application (SPA) responsiva y estilizada que permite la gestión administrativa del sitio de forma segura:
 
@@ -192,7 +192,7 @@ Es una Single Page Application (SPA) responsiva y estilizada que permite la gest
 
 ---
 
-## ⚙️ Configuración y Puesta en Marcha
+## Configuración y Puesta en Marcha
 
 ### Requisitos Previos
 - PHP 8.0 o superior con las extensiones `pdo`, `pdo_sqlite`, `sqlite3` y `curl` habilitadas.
@@ -212,7 +212,7 @@ El servidor web estará disponible en [http://localhost:3000](http://localhost:3
 
 ---
 
-## 🌐 Paso a Producción (Checklist)
+## Paso a Producción (Checklist)
 
 Antes de lanzar el sitio web públicamente en un hosting real, es necesario completar las siguientes configuraciones de seguridad e integración:
 
@@ -228,7 +228,7 @@ Antes de lanzar el sitio web públicamente en un hosting real, es necesario comp
 
 ---
 
-## 💰 Costos de Operación y Lanzamiento (Chile)
+## Costos de Operación y Lanzamiento (Chile)
 
 El presupuesto de mantenimiento y operación para la plataforma en Chile se desglosa a continuación:
 
