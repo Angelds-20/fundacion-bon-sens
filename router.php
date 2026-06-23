@@ -24,11 +24,21 @@ if (file_exists($pdoSqliteSo) && !extension_loaded('pdo_sqlite')) {
 $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH);
 
-// Bloquear acceso directo a backend y router.php
-if (strpos($path, '/backend/') === 0 || $path === '/router.php') {
-    http_response_code(403);
-    echo "Acceso denegado.\n";
-    return true;
+// Bloquear acceso directo a backend, router.php, archivos ocultos y de configuración
+$blockedPatterns = [
+    '#^/backend/#',
+    '#^/router\.php$#',
+    '#^/\.#', // Archivos ocultos (.env, .git, etc.)
+    '#/(Dockerfile|docker-compose\.yml|fly\.toml|entrypoint\.sh|start\.sh)$#i',
+    '#\.(env|db|sqlite|log|yml|toml|sh|md|json)$#i'
+];
+
+foreach ($blockedPatterns as $pattern) {
+    if (preg_match($pattern, $path)) {
+        http_response_code(403);
+        echo "Acceso denegado.\n";
+        return true;
+    }
 }
 
 // Servir archivos estáticos si existen

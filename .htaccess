@@ -4,9 +4,16 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Bloquear solicitudes HTTP directas a archivos del backend y router.php
+    # Bloquear solicitudes HTTP directas a archivos del backend, instaladores y archivos de configuración
     RewriteCond %{THE_REQUEST} \s/backend/ [NC,OR]
-    RewriteCond %{THE_REQUEST} \s/router\.php [NC]
+    RewriteCond %{THE_REQUEST} \s/router\.php [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/Dockerfile [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/docker-compose [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/fly\.toml [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/entrypoint\.sh [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/start\.sh [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/README\.md [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/DOCUMENTACION\.md [NC]
     RewriteRule ^ - [F,L]
 
     # API routes
@@ -50,8 +57,8 @@
     AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/json application/javascript image/svg+xml
 </IfModule>
 
-# Denegar acceso a archivos sensibles
-<FilesMatch "\.(env|sqlite|db|log)$">
+# Denegar acceso a archivos sensibles, logs, configuraciones e infraestructura
+<FilesMatch "^\.|\.(env|sqlite|db|log|yml|toml|sh|md|json)$">
     Require all denied
 </FilesMatch>
 
