@@ -116,7 +116,7 @@ function initCounters() {
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.1 }
   );
 
   counters.forEach((counter) => observer.observe(counter));
