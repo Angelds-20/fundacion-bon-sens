@@ -4,6 +4,11 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Bloquear solicitudes HTTP directas a archivos del backend y router.php
+    RewriteCond %{THE_REQUEST} \s/backend/ [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/router\.php [NC]
+    RewriteRule ^ - [F,L]
+
     # API routes
     RewriteRule ^api/(.*)$ backend/api.php [QSA,L,E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 

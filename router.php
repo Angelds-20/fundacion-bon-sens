@@ -24,6 +24,13 @@ if (file_exists($pdoSqliteSo) && !extension_loaded('pdo_sqlite')) {
 $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH);
 
+// Bloquear acceso directo a backend y router.php
+if (strpos($path, '/backend/') === 0 || $path === '/router.php') {
+    http_response_code(403);
+    echo "Acceso denegado.\n";
+    return true;
+}
+
 // Servir archivos estáticos si existen
 if ($path !== '/' && file_exists(__DIR__ . $path) && is_file(__DIR__ . $path)) {
     return false;

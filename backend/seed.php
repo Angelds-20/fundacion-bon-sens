@@ -5,6 +5,12 @@
  * Uso: php backend/seed.php
  */
 
+if (php_sapi_name() !== 'cli') {
+    http_response_code(403);
+    echo "Acceso denegado. Este script solo puede ejecutarse desde la terminal (CLI).\n";
+    exit;
+}
+
 require_once __DIR__ . '/config.php';
 
 echo "🌱 Sembrando datos...\n\n";
