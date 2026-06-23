@@ -25,9 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
 });
 
-// ============================================
-// MENÚ MÓVIL
-// ============================================
+// Menú móvil
 
 function initMobileMenu() {
   const toggleButton = document.getElementById('mobile-menu-button');
@@ -49,9 +47,7 @@ function initMobileMenu() {
   });
 }
 
-// ============================================
-// HEADER STICKY
-// ============================================
+// Header sticky
 
 function initStickyHeader() {
   const header = document.querySelector('.site-header');
@@ -64,9 +60,7 @@ function initStickyHeader() {
   window.addEventListener('scroll', onScroll);
 }
 
-// ============================================
-// SMOOTH SCROLL
-// ============================================
+// Smooth scroll
 
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -83,9 +77,7 @@ function initSmoothScroll() {
   });
 }
 
-// ============================================
-// CONTADORES ANIMADOS
-// ============================================
+// Contadores animados
 
 function initCounters() {
   const counters = document.querySelectorAll('[data-counter]');
@@ -123,9 +115,7 @@ function initCounters() {
   counters.forEach((counter) => observer.observe(counter));
 }
 
-// ============================================
-// DONACIÓN - BOTÓN CENTRALIZADO
-// ============================================
+// Donación - Botón centralizado
 
 function initDonationButtons() {
   document.querySelectorAll('[data-donate]').forEach((btn) => {
@@ -238,9 +228,7 @@ function showDonationModal() {
   });
 }
 
-// ============================================
-// FORMULARIO DE CONTACTO
-// ============================================
+// Formulario de contacto
 
 function initContactForm() {
   // Buscar formulario de contacto donde esté (index.html, contacto.html)
@@ -293,9 +281,7 @@ function initContactForm() {
   });
 }
 
-// ============================================
-// NEWSLETTER
-// ============================================
+// Newsletter
 
 function initNewsletterForm() {
   // Buscar formularios de suscripción por data属性 o clase
@@ -334,9 +320,7 @@ function initNewsletterForm() {
   });
 }
 
-// ============================================
-// SISTEMA DE TOAST
-// ============================================
+// Sistema de Toast
 
 function showToast(message, type = 'success') {
   const existing = document.getElementById('app-toast');
@@ -379,9 +363,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ============================================
-// NOTICIAS PÚBLICAS DINÁMICAS
-// ============================================
+// Noticias públicas dinámicas
 
 function initPublicNews() {
   const container = document.getElementById('news-container');
@@ -488,9 +470,7 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// ============================================
-// REVELACIÓN AL HACER SCROLL (SCROLL REVEAL)
-// ============================================
+// Revelación al hacer scroll (Scroll Reveal)
 
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');

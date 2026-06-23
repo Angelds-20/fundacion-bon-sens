@@ -9,7 +9,7 @@
  * Carga las extensiones SQLite si se requieren en entornos temporales.
  */
 
-// ─── Cargar extensiones SQLite (necesario en este entorno) ───────
+// Cargar extensiones SQLite (necesario en este entorno)
 $sqliteSo = '/tmp/php-sqlite-ext/usr/lib/php/modules/sqlite3.so';
 $pdoSqliteSo = '/tmp/php-sqlite-ext/usr/lib/php/modules/pdo_sqlite.so';
 
@@ -20,7 +20,7 @@ if (file_exists($pdoSqliteSo) && !extension_loaded('pdo_sqlite')) {
     dl($pdoSqliteSo);
 }
 
-// ─── Router ──────────────────────────────────────────────────────
+// Router
 $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH);
 

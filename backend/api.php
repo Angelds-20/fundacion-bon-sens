@@ -14,10 +14,10 @@
  *   JSON input/output
  */
 
-// ─── Inicialización ──────────────────────────────────────────────
+// Inicialización
 require_once __DIR__ . '/config.php';
 
-// ─── CORS ────────────────────────────────────────────────────────
+// CORS
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// ─── Logger básico ───────────────────────────────────────────────
+// Logger básico
 error_log(sprintf("[BonSens API] %s %s", $_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']));
 
-// ─── Parsear ruta ─────────────────────────────────────────────────
+// Parsear ruta
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH);
@@ -39,7 +39,7 @@ $path = parse_url($uri, PHP_URL_PATH);
 $path = preg_replace('#^/api#', '', $path);
 $path = rtrim($path, '/') ?: '/';
 
-// ─── Autenticación ───────────────────────────────────────────────
+// Autenticación
 function authenticate(): ?array {
     // Intentar obtener el header Authorization (Apache a veces no lo expone)
     $auth = $_SERVER['HTTP_AUTHORIZATION']
@@ -68,7 +68,7 @@ function requireAuth(): array {
     return $session;
 }
 
-// ─── Rate Limiting simple (en memoria) ───────────────────────────
+// Rate Limiting simple (en memoria)
 $rateLimitFile = sys_get_temp_dir() . '/bonsens_ratelimit_' . md5($_SERVER['REMOTE_ADDR'] ?? 'local');
 $rateLimitWindow = 3600; // 1 hora
 $rateLimitMax = 200;    // 200 requests/hora
@@ -87,12 +87,10 @@ function checkRateLimit(string $file, int $max, int $window): void {
 }
 checkRateLimit($rateLimitFile, $rateLimitMax, $rateLimitWindow);
 
-// ─── Routing ─────────────────────────────────────────────────────
+// Routing
 try {
     switch (true) {
-        // ==========================================
         // ADMIN
-        // ==========================================
         case $path === '/admin/login' && $method === 'POST':
             handleAdminLogin();
             break;
@@ -107,9 +105,7 @@ try {
             handleDashboard();
             break;
 
-        // ==========================================
         // CONTACT
-        // ==========================================
         case $path === '/contact' && $method === 'POST':
             handleContactSubmit();
             break;
@@ -129,9 +125,7 @@ try {
             handleContactDelete((int)$m[1]);
             break;
 
-        // ==========================================
         // NEWS
-        // ==========================================
         case $path === '/news' && $method === 'GET':
             handleNewsList();
             break;
@@ -155,9 +149,7 @@ try {
             handleNewsDetail($m[1]);
             break;
 
-        // ==========================================
         // SUBSCRIBE
-        // ==========================================
         case $path === '/subscribe' && $method === 'POST':
             handleSubscribe();
             break;
@@ -172,9 +164,7 @@ try {
             handleSubscriberDelete((int)$m[1]);
             break;
 
-        // ==========================================
         // DONATIONS
-        // ==========================================
         case $path === '/donations' && $method === 'POST':
             handleDonationCreate();
             break;
@@ -192,9 +182,7 @@ try {
             handleDonationConfirm();
             break;
 
-        // ==========================================
         // HEALTH / STATS
-        // ==========================================
         case $path === '/health' && $method === 'GET':
             jsonResponse([
                 'success' => true,
@@ -208,9 +196,7 @@ try {
             handlePublicStats();
             break;
 
-        // ==========================================
         // 404
-        // ==========================================
         default:
             jsonError('Endpoint no encontrado: ' . $method . ' ' . $path, 404);
     }
@@ -222,9 +208,7 @@ try {
     jsonError('Error interno del servidor.', 500);
 }
 
-// ================================================================
-//  HANDLERS - ADMIN
-// ================================================================
+// Handlers - Admin
 
 function handleAdminLogin(): void {
     $data = getJsonBody();
@@ -274,9 +258,7 @@ function handleDashboard(): void {
     ]);
 }
 
-// ================================================================
-//  HANDLERS - CONTACT
-// ================================================================
+// Handlers - Contact
 
 function handleContactSubmit(): void {
     $data = getJsonBody();
@@ -344,9 +326,7 @@ function handleContactDelete(int $id): void {
     jsonResponse(['success' => true, 'message' => 'Mensaje eliminado.']);
 }
 
-// ================================================================
-//  HANDLERS - NEWS
-// ================================================================
+// Handlers - News
 
 function handleNewsList(): void {
     $db = getDB();
@@ -466,9 +446,7 @@ function handleNewsDelete(int $id): void {
     jsonResponse(['success' => true, 'message' => 'Noticia eliminada.']);
 }
 
-// ================================================================
-//  HANDLERS - SUBSCRIBE
-// ================================================================
+// Handlers - Subscribe
 
 function handleSubscribe(): void {
     $data = getJsonBody();
@@ -529,9 +507,7 @@ function handleSubscriberDelete(int $id): void {
     jsonResponse(['success' => true, 'message' => 'Suscriptor eliminado.']);
 }
 
-// ================================================================
-//  HANDLERS - DONATIONS
-// ================================================================
+// Handlers - Donations
 
 function handleDonationCreate(): void {
     $data = getJsonBody();
@@ -843,9 +819,7 @@ function confirmWebpayTransaction(string $token): ?array {
     return null;
 }
 
-// ================================================================
-//  HANDLERS - PUBLIC STATS
-// ================================================================
+// Handlers - Public Stats
 
 function handlePublicStats(): void {
     $db = getDB();
