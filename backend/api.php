@@ -718,7 +718,7 @@ function handleDonationConfirm(): void {
     <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full">
             <div class="bg-custom p-6 text-white text-center">
-                <img src="/logo2.PNG" alt="Fundación Bon Sens" class="h-12 mx-auto bg-white rounded-xl p-1 mb-4" />
+                <img src="/nuevo_logo.png" alt="Fundación Bon Sens" class="h-12 mx-auto bg-white rounded-xl p-1 mb-4" />
                 <h1 class="text-2xl font-bold">Estado de Transacción</h1>
             </div>
 

@@ -28,7 +28,7 @@ web/
 ├── contacto.html            # Formulario de contacto y mapa (Pública)
 ├── style.css                # Estilos personalizados generales del sitio
 ├── main.js                  # Frontend JS (Newsletter, Contacto, Donaciones, Menú Móvil)
-├── logo2.PNG                # Logotipo oficial de la Fundación
+├── nuevo_logo.png                # Logotipo oficial de la Fundación
 ├── router.php               # Router para servidor local de desarrollo PHP
 ├── .htaccess                # Configuración de URLs limpias y seguridad para Apache
 ├── start.sh                 # Script Bash de inicio automático y siembra de datos
